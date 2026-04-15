@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 // procedimento para printar o cabeçalho do programa
 void cabecalho() {
@@ -42,7 +44,7 @@ double encontrar_maximo(double a, double b, double c) {
 
 // função para verificar se um valor tá dentro da faixa que o user especificou
 void verificar_faixa(double x, double max_aceito, double min_aceito) {
-    printf("%2.lf: ", x);
+    printf("%.2lf: ", x);
     if (x<min_aceito) printf("ABAIXO DO LIMITE\n");
     else if (x>max_aceito) printf("ACIMA DO LIMITE\n");
     else printf("OK\n");
@@ -112,7 +114,7 @@ int main() {
         if (opcao == 2) printf("Valor maximo: %.2lf\nValor minimo: %.2lf\n\n", encontrar_maximo(valor1, valor2, valor3), encontrar_minimo(valor1, valor2, valor3));
         
         // opção 3: mostra quanto cada valor desvia da média
-        if (opcao == 3) printf("Desvio da primeira leitura: %.2lf\nDesvio da segunda leitura: %.2lf\nDesvio da terceira leitura: %.2lf\n\n", (valor1-media), (valor2-media), (valor3-media));
+        if (opcao == 3) printf("Desvio da primeira leitura: %.2lf\nDesvio da segunda leitura: %.2lf\nDesvio da terceira leitura: %.2lf\n\n", fabs(valor1-media), fabs(valor2-media), fabs(valor3-media));
         
         // opção 4: pede a faixa aceitável e diz se os valores tão ok
         if (opcao == 4) {
