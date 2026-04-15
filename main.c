@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <unistd.h>
 
 // procedimento para printar o cabeçalho do programa
 void cabecalho() {
     printf("---------------------------------\n");
-    printf("  IMORTAL 1 - Sistema de Bordo   \n");
+    printf("\033[31m  IMORTAL 1 - Sistema de Bordo   \033[0m\n");
     printf("---------------------------------\n\n");
 }
 
 // procedimento para printar o menu com as opções que o usuário pode escolher
 void menu() {
-    printf("         ---- MENU ----          \n\n");
+    printf("\033[31m         ---- MENU ----          \033[0m\n\n");
     printf("1 - Média\n");
     printf("2 - Máx/Mín\n");
     printf("3 - Desvios\n");
@@ -45,16 +46,21 @@ double encontrar_maximo(double a, double b, double c) {
 // função para verificar se um valor tá dentro da faixa que o user especificou
 void verificar_faixa(double x, double max_aceito, double min_aceito) {
     printf("%.2lf: ", x);
-    if (x<min_aceito) printf("ABAIXO DO LIMITE\n");
-    else if (x>max_aceito) printf("ACIMA DO LIMITE\n");
-    else printf("OK\n");
+    if (x<min_aceito) printf("\033[31mABAIXO DO LIMITE\033[0m\n");
+    else if (x>max_aceito) printf("\033[31mACIMA DO LIMITE\033[0m\n");
+    else printf("\033[32mOK\033[0m\n");
 }
 
 // função para printar uma barra gráfica de asteriscos pra mostrar a média
 void faixa_grafica(double media) {
     int i;
-    printf("Intensidade média: %.2lf\n{", media);
-    for (i=0;i<media;i++) printf("*");
+    printf("Intensidade média: \033[34m%.2lf\033[0m\n{", media);
+    fflush(stdout);
+    for (i=0;i<media;i++) {
+    printf("\033[32m*\033[0m");
+    fflush(stdout);
+    usleep(300000);
+    }
     printf("}\n\n");
 
 }
@@ -108,13 +114,13 @@ int main() {
         if (opcao == 0) break;
         
         // opção 1: mostra a média
-        if (opcao == 1) printf("Media dos valores: %.2lf\n\n", media);
+        if (opcao == 1) printf("Media dos valores: \033[34m%.2lf\033[0m\n\n", media);
         
         // opção 2: mostra o maior e menor valor
-        if (opcao == 2) printf("Valor maximo: %.2lf\nValor minimo: %.2lf\n\n", encontrar_maximo(valor1, valor2, valor3), encontrar_minimo(valor1, valor2, valor3));
+        if (opcao == 2) printf("Valor maximo: \033[34m%.2lf\033[0m\nValor minimo: \033[34m%.2lf\033[0m\n\n", encontrar_maximo(valor1, valor2, valor3), encontrar_minimo(valor1, valor2, valor3));
         
         // opção 3: mostra quanto cada valor desvia da média
-        if (opcao == 3) printf("Desvio da primeira leitura: %.2lf\nDesvio da segunda leitura: %.2lf\nDesvio da terceira leitura: %.2lf\n\n", fabs(valor1-media), fabs(valor2-media), fabs(valor3-media));
+        if (opcao == 3) printf("Desvio da primeira leitura: \033[34m%.2lf\033[0m\nDesvio da segunda leitura: \033[34m%.2lf\033[0m\nDesvio da terceira leitura: \033[34m%.2lf\033[0m\n\n", fabs(valor1-media), fabs(valor2-media), fabs(valor3-media));
         
         // opção 4: pede a faixa aceitável e diz se os valores tão ok
         if (opcao == 4) {
@@ -143,15 +149,15 @@ int main() {
         
         // opção 6: mostra tudo junto num relatório completo
         if (opcao == 6) {
-            printf("== RELATORIO COMLETO ==\n\n");
+            printf("== \033[31mRELATORIO COMLETO\033[0m ==\n\n");
             
-            printf("Media dos valores: %.2lf\n\n", media);
+            printf("Media dos valores: \033[34m%.2lf\033[0m\n\n", media);
             printf("--------------------------------------------------\n\n");
             
-            printf("Valor maximo: %.2lf\nValor minimo: %.2lf\n\n", encontrar_maximo(valor1, valor2, valor3), encontrar_minimo(valor1, valor2, valor3));
+            printf("Valor maximo: \033[34m%.2lf\033[0m\nValor minimo: \033[34m%.2lf\033[0m\n\n", encontrar_maximo(valor1, valor2, valor3), encontrar_minimo(valor1, valor2, valor3));
             printf("--------------------------------------------------\n\n");
 
-            printf("Desvio da primeira leitura: %.2lf\nDesvio da segunda leitura: %.2lf\nDesvio da terceira leitura: %.2lf\n\n", (valor1-media), (valor2-media), (valor3-media));
+            printf("Desvio da primeira leitura: \033[34m%.2lf\033[0m\nDesvio da segunda leitura: \033[34m%.2lf\033[0m\nDesvio da terceira leitura: \033[34m%.2lf\033[0m\n\n", (valor1-media), (valor2-media), (valor3-media));
             printf("--------------------------------------------------\n\n");
 
             if (min==0 || max==0) {
