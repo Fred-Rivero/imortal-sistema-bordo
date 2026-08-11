@@ -1,26 +1,39 @@
-# 🚀 IMORTAL 1 - Sistema de Bordo
+# 🚀 IMORTAL 1 - Onboard System
 
-Sistema desenvolvido em C que simula o processamento de leituras de um satélite fictício.
+<br>
+A system developed in C that simulates the processing of readings from a fictional satellite.
+<br>
 
-## 📊 Funcionalidades
+## 📊 Features
 
-- Cálculo da média de três leituras
-- Identificação do valor máximo e mínimo
-- Cálculo de desvios em relação à média
-- Verificação de valores dentro de uma faixa aceitável
-- Representação gráfica da média com asteriscos
-- Relatório completo com todas as análises
+<br>
 
-## 🧠 Conceitos aplicados
+- Calculation of the average of three readings
+- Identification of the maximum and minimum values
+- Calculation of deviations from the average
+- Verification of values within an acceptable range
+- Graphical representation of the average using asterisks
+- Complete report with all analyses
 
-- Funções
-- Estruturas condicionais (if/else)
-- Estruturas de repetição (while)
-- Entrada e saída de dados (scanf/printf)
-- Organização modular do código
+<br>
 
-## ▶️ Como compilar e executar
+## 🧠 Concepts Applied
+
+<br>
+
+- Functions
+- Conditional statements (if/else)
+- Loop structures (while)
+- Input and output operations (scanf/printf)
+- Modular code organization
+
+<br>
+
+## ▶️ How to Compile and Run
+
+<br>
 
 ```bash
 gcc main.c -o imortal
 ./imortal
+```
